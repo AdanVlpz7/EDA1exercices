@@ -1,26 +1,34 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void suma(float a, float b, float c){
-    c = a + b;
-    printf("%f",c);
+void suma(float a, float b, float *c){
+    float x;
+    x = a + b;
+    c = &x;
+    printf("%f",*c);
 }
-void resta(float a, float b, float c){
-    c = a - b;
-    printf("%f",c);
+void resta(float a, float b, float* c){
+    float x;
+    x = a - b;
+    c = &x;
+    printf("%f",*c);
 }
-void multiplicacion(float a, float b, float c){
-    c = a * b;
-    printf("%f",c);
+void multiplicacion(float a, float b, float* c){
+    float x;
+    x = a * b;
+    c = &x;
+    printf("%f",*c);
 }
-void division(float a, float b, float c){
-    c = a / b;
-    printf("%f",c);
+void division(float a, float b, float* c){
+    float x;
+    x = a / b;
+    c = &x;
+    printf("%f",*c);
 }
 int main(){
     float operando1 = 0;
     float operando2 = 0;
-    float resultado = 0;
+    float* resultado;
     int opcion = 0;
 
     printf("Bienvenido, ¿que operacion quiere realizar?\n");
@@ -59,4 +67,5 @@ int main(){
             division(operando1,operando2,resultado);
             break;        
     }
+    
 }
