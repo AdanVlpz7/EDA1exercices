@@ -6,17 +6,15 @@
 #define LISTALIGADA_H
 #include <stdbool.h>
 
-struct _DATA{
-    int x;
-};
-typedef struct _DATA DATA;
-
 typedef struct _node NODE;
+typedef int DATA;
 
 struct _node{
     DATA info; // la información del nodo
     NODE *siguiente; //el apuntador al elemento sig. de la lista
 };
+
+typedef struct _list LIST;
 
 struct _list{ 
     NODE *head;
@@ -24,14 +22,22 @@ struct _list{
     int num;
 };
 
-typedef struct _list LIST;
-
 NODE *new_node(DATA info); // crear nodo
 void free_node(NODE *n); //eliminar nodo
 
-LIST* new_list(); //crear lista
-void free_list(LIST *l); //liberar lista
+LIST *new_list(); //crear lista
+bool insertar_inicio(LIST *l, DATA info);
+bool insertar_fin(LIST *l, DATA info);
+bool insert(LIST* l, DATA info, int pos);
 
 bool is_empty(LIST *l);
-bool insert(LIST *l, DATA info, int p);
+bool vaciar(LIST *l);
+
+void imprimir_lista(LIST *l);
+void eliminarInicio(LIST *l);
+void eliminarFin(LIST *l);
+void eliminarPorPosicion(LIST *l, int pos);
+DATA* buscar(LIST* l, int pos);
+int localizar(LIST *l, DATA info);
+bool comparar(DATA info1, DATA info2);
 #endif
